@@ -16,14 +16,31 @@ export default function App() {
   const [Texto, setTexto] = useState("");
 
   const NovasTarefas = () => {
-    if (Texto == "") return;
-    setTarefas([...Tarefas, Texto]);
+    if (Texto === "") return;
+  
+    const existingTaskIndex = Tarefas.findIndex((task) => task === Texto);
+  
+    if (existingTaskIndex !== -1) {
+      const newTasks = [...Tarefas];
+      newTasks[existingTaskIndex] = Texto;
+      setTarefas(newTasks);
+    } else {
+      setTarefas([...Tarefas, Texto]);
+    }
+
     setTexto("");
   };
+
+  const handleEdit = (editedText, index) => {
+    const newTasks = [...Tarefas];
+    newTasks[index] = editedText;
+    setTarefas(newTasks);
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor= {'white'} barStyle="dark-content"/>
-      <Text style={styles.tittle}>Minha Lista</Text>
+      <Text style={styles.tittle}>Minha Lista de Tarefas</Text>
       
       <View style={styles.form}>
         <TextInput
@@ -39,7 +56,13 @@ export default function App() {
       </View>
       <ScrollView>
         {Tarefas.map((value, index) => {
-          return (<Todo Texto={value} key={index}/>);
+          return (
+            <Todo
+              Texto={value}
+              key={index}
+              onEdit={(editedText) => handleEdit(editedText, index)}
+            />
+          );
         })}
       </ScrollView>
     </View>
@@ -75,7 +98,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#435676',
-    fontSize: 50,
-    textDecorationLine: 'underline'
+    fontSize: 44,
   },
 });

@@ -1,30 +1,58 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";  // Adicione o TextInput aqui
 
-const Todo = ({ Texto }) => {
+const Todo = ({ Texto, onEdit, onDelete }) => {
   const [check, setCheck] = useState(false);
-  const [borrar, setborrar] = useState(false)
+  const [borrar, setborrar] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [editedText, setEditedText] = useState(Texto);
+
+  const handleEdit = () => {
+    setEditing(!editing);
+    if (editing) {
+      onEdit(editedText);
+    }
+  };
 
   return (
-    <View style={{...Estilo.Todo, display: (borrar)? 'none': 'flex'}}>
-      <TouchableOpacity
-        style={{
-          ...Estilo.Check,
-          backgroundColor: check ? "#3BE67C" : "#D13030",
-        }}
-        onPress={() => setCheck(!check)}
-      />
-      <Text style={Estilo.Text}>{Texto}</Text>
-      <TouchableOpacity onPress={()=>setborrar(true)}>
-        <Text style={Estilo.borrar}>X</Text>
-      </TouchableOpacity>
+<View style={{ ...styles.Todo, display: borrar ? "none" : "flex" }}>
+      {!editing ? (
+        <>
+          <TouchableOpacity
+            style={{
+              ...styles.Check,
+              backgroundColor: check ? "#3BE67C" : "#D13030",
+            }}
+            onPress={() => setCheck(!check)}
+          />
+          <Text style={styles.Text}>{Texto}</Text>
+          <TouchableOpacity onPress={handleEdit}>
+            <Text style={styles.editar}>Editar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setborrar(true)}>
+            <Text style={styles.borrar}>X</Text>
+          </TouchableOpacity>
+        </>
+      ) : (
+        <>
+          <TextInput
+            style={styles.textinput}
+            maxLength={50}
+            value={editedText}
+            onChangeText={(value) => setEditedText(value)}
+          />
+          <TouchableOpacity onPress={handleEdit}>
+            <Text style={styles.editar}>Salvar</Text>
+          </TouchableOpacity>
+        </>
+      )}
     </View>
   );
 };
 
 export default Todo;
 
-const Estilo = StyleSheet.create({
+const styles = StyleSheet.create({
   Todo: {
     borderWidth: 1,
     borderColor: "#435676",
@@ -56,5 +84,21 @@ const Estilo = StyleSheet.create({
     color: "white",
     borderRadius: 15,
     textAlignVertical: "center",
+  },
+  editar: {
+    textAlign: "center",
+    backgroundColor: "#D1D1D1",
+    width: 50,
+    height: 20,
+    alignSelf: "center",
+    color: "white",
+    borderRadius: 15,
+    textAlignVertical: "center",
+    marginRight:10,
+  },
+  textinput: {
+    width: 280,
+    height: 20,
+    
   },
 });
