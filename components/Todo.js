@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";  // Adicione o TextInput aqui
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";  
+
 
 const Todo = ({ Texto, onEdit, onDelete }) => {
+  
   const [check, setCheck] = useState(false);
   const [borrar, setborrar] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editedText, setEditedText] = useState(Texto);
 
+  // Função para lidar com a edição do Todo
   const handleEdit = () => {
     setEditing(!editing);
     if (editing) {
@@ -15,9 +18,12 @@ const Todo = ({ Texto, onEdit, onDelete }) => {
   };
 
   return (
-<View style={{ ...styles.Todo, display: borrar ? "none" : "flex" }}>
+    
+    <View style={{ ...styles.Todo, display: borrar ? "none" : "flex" }}>
       {!editing ? (
+        // Renderização quando não está em modo de edição
         <>
+          
           <TouchableOpacity
             style={{
               ...styles.Check,
@@ -25,22 +31,28 @@ const Todo = ({ Texto, onEdit, onDelete }) => {
             }}
             onPress={() => setCheck(!check)}
           />
+          
           <Text style={styles.Text}>{Texto}</Text>
+          
           <TouchableOpacity onPress={handleEdit}>
             <Text style={styles.editar}>Editar</Text>
           </TouchableOpacity>
+          
           <TouchableOpacity onPress={() => setborrar(true)}>
             <Text style={styles.borrar}>X</Text>
           </TouchableOpacity>
         </>
       ) : (
+        // Renderização quando está em modo de edição
         <>
+       
           <TextInput
             style={styles.textinput}
             maxLength={50}
             value={editedText}
             onChangeText={(value) => setEditedText(value)}
           />
+          
           <TouchableOpacity onPress={handleEdit}>
             <Text style={styles.editar}>Salvar</Text>
           </TouchableOpacity>
@@ -49,8 +61,6 @@ const Todo = ({ Texto, onEdit, onDelete }) => {
     </View>
   );
 };
-
-export default Todo;
 
 const styles = StyleSheet.create({
   Todo: {
@@ -94,11 +104,13 @@ const styles = StyleSheet.create({
     color: "white",
     borderRadius: 15,
     textAlignVertical: "center",
-    marginRight:10,
+    marginRight: 10,
   },
   textinput: {
     width: 280,
     height: 20,
-    
   },
 });
+
+// Exporta o componente Todo como padrão
+export default Todo;

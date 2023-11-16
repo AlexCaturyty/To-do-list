@@ -15,11 +15,14 @@ export default function App() {
   const [Tarefas, setTarefas] = useState([]);
   const [Texto, setTexto] = useState("");
 
+  // Função para adicionar novas tarefas
   const NovasTarefas = () => {
     if (Texto === "") return;
   
+    // Verificar se a tarefa já existe
     const existingTaskIndex = Tarefas.findIndex((task) => task === Texto);
   
+    // Se existir, substituir a tarefa existente; se não, adicionar uma nova
     if (existingTaskIndex !== -1) {
       const newTasks = [...Tarefas];
       newTasks[existingTaskIndex] = Texto;
@@ -28,9 +31,11 @@ export default function App() {
       setTarefas([...Tarefas, Texto]);
     }
 
+    // Limpar o campo de texto após adicionar a tarefa
     setTexto("");
   };
 
+  // Função para lidar com a edição de uma tarefa
   const handleEdit = (editedText, index) => {
     const newTasks = [...Tarefas];
     newTasks[index] = editedText;
@@ -54,6 +59,7 @@ export default function App() {
           <Text style={{ color: "white" }}>Enviar</Text>
         </TouchableOpacity>
       </View>
+      
       <ScrollView>
         {Tarefas.map((value, index) => {
           return (
