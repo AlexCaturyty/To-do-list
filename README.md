@@ -1,6 +1,6 @@
 # Após clonar instale os pacotes node com o comando:
 
-## **npm i**
+## ˋnpm iˋ
 
 # Uma vez instalado os pacotes é só iniciar o projeto.
 
