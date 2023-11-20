@@ -8,10 +8,28 @@ import {
   TouchableOpacity,
   StatusBar
 } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import Todo from "./components/Todo";
 
-export default function App() {
+// Página Inicial
+const HomeScreen = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Bem-vindo à Sua Aplicação</Text>
+      <TouchableOpacity
+        style={styles.navigateToTasksButton}
+        onPress={() => navigation.navigate("ListaTarefas")}
+      >
+        <Text style={{ color: "white" }}>Ir para Lista de Tarefas</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+// Lista de Tarefas
+const ListaTarefasScreen = ({ navigation }) => {
   const [Tarefas, setTarefas] = useState([]);
   const [Texto, setTexto] = useState("");
 
@@ -75,6 +93,21 @@ export default function App() {
   );
 }
 
+const Stack = createStackNavigator();
+
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="ListaTarefas" component={ListaTarefasScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -105,5 +138,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#435676',
     fontSize: 44,
+  },
+  navigateToTasksButton: {
+    backgroundColor: "#435676",
+    padding: 8,
+    borderRadius: 4,
   },
 });
