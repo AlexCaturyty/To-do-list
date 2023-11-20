@@ -1,7 +1,9 @@
-# Após clonar instale os pacotes node com o comando:
+# Projeto em React Native:
+# To-do List
 
-### npm i
+## Ao baixar o repositório rode o seguinte comando no terminal para instalar os pacotes do Node:
+### `npm i`
 
-# Uma vez instalado os pacotes é só iniciar o projeto:
+## Para iniciar a aplicação rode o comando no terminal:
 
-### **npm start**
+### `npm start`
