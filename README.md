@@ -8,3 +8,8 @@
 ## Para iniciar a aplicação rode o comando no terminal:
 
 ### `npm start`
+
+## Para utilizar o aplicativo baixe o app na playstore:
+### Expo Go
+
+## Após baixar e rodar o comando `npm start` leia o QRCode exibido no Terminal para rodar o aplicativo.
