@@ -39,7 +39,7 @@ const Todo = ({ Texto, onEdit, onDelete }) => {
           </TouchableOpacity>
           
           <TouchableOpacity onPress={() => setborrar(true)}>
-            <Text style={styles.borrar}>X</Text>
+            <Text style={styles.borrar}>Deletar</Text>
           </TouchableOpacity>
         </>
       ) : (
@@ -69,9 +69,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 8,
     borderRadius: 8,
-    margin: 8,
+    margin: 15,
     alignItems: "center",
     justifyContent: "space-between",
+
   },
   Text: {
     fontSize: 16,
@@ -87,22 +88,23 @@ const styles = StyleSheet.create({
   },
   borrar: {
     textAlign: "center",
-    backgroundColor: "#D1D1D1",
-    width: 20,
-    height: 20,
+    backgroundColor: "red",
+    width: 50,
+    height: 30,
     alignSelf: "center",
     color: "white",
-    borderRadius: 15,
+    borderRadius: 5,
     textAlignVertical: "center",
+    marginRight: 10,
   },
   editar: {
     textAlign: "center",
-    backgroundColor: "#D1D1D1",
+    backgroundColor: "#435676",
     width: 50,
-    height: 20,
+    height: 30,
     alignSelf: "center",
     color: "white",
-    borderRadius: 15,
+    borderRadius: 5,
     textAlignVertical: "center",
     marginRight: 10,
   },

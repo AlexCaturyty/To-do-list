@@ -19,6 +19,8 @@ const HomeScreen = ({ navigation }) => {
     <View style={styles.container}>
       <StatusBar backgroundColor= {'white'} barStyle="dark-content"/>
       <Text style={styles.tittle}>Olá, seja bem vindo!</Text>
+
+
       <View style={styles.form}>
         <TextInput
           placeholder="Login"
@@ -40,6 +42,8 @@ const HomeScreen = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>Acessar</Text>
       </TouchableOpacity>
+      <Text style={styles.legend}>Aplicativo de tarefas feito pela equipe: Alex Lucas, Paulo Barreto, Nicolly Mendonça, Tatiana Helena, José Gabriel, Gabriel Albuquerque,
+      Arthur Eulálio e Sâmia Clemente</Text>
     </View>
   );
 };
@@ -155,6 +159,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#435676',
     fontSize: 40,
+    marginTop: 5,
+    padding: 3
+  },
+  legend:{
+    textAlign: 'center',
+    color: '#435676',
+    fontSize: 15,
     marginTop: 5,
     padding: 3
   },
