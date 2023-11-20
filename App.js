@@ -17,12 +17,28 @@ import Todo from "./components/Todo";
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bem-vindo à Sua Aplicação</Text>
+      <StatusBar backgroundColor= {'white'} barStyle="dark-content"/>
+      <Text style={styles.tittle}>Olá, seja bem vindo!</Text>
+      <View style={styles.form}>
+        <TextInput
+          placeholder="Login"
+          style={styles.textinput}
+          maxLength={50}
+          />
+      </View>
+      <View style={styles.form}>
+        <TextInput
+          placeholder="Senha"
+          secureTextEntry={true} // Configuração para ocultar o texto
+          style={styles.textinput}
+          maxLength={50}
+          />
+      </View>
       <TouchableOpacity
         style={styles.navigateToTasksButton}
-        onPress={() => navigation.navigate("ListaTarefas")}
+        onPress={() => navigation.navigate("Tarefas")}
       >
-        <Text style={{ color: "white" }}>Ir para Lista de Tarefas</Text>
+        <Text style={styles.buttonText}>Acessar</Text>
       </TouchableOpacity>
     </View>
   );
@@ -100,8 +116,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="ListaTarefas" component={ListaTarefasScreen} />
+        <Stack.Screen name="Início" component={HomeScreen} />
+        <Stack.Screen name="Tarefas" component={ListaTarefasScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -122,7 +138,8 @@ const styles = StyleSheet.create({
   },
   textinput: {
     flex: 1,
-    borderBottomWidth: 1,
+    // borderBottomWidth: 1,
+    borderWidth: 1,
     borderColor: 'gray',
     padding: 8,
     marginRight: 8,
@@ -131,17 +148,28 @@ const styles = StyleSheet.create({
   addTodo: {
     backgroundColor: "#435676",
     padding: 8,
-    borderRadius: 4,
+    borderRadius: 5,
   },
   tittle:{
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#435676',
-    fontSize: 44,
+    fontSize: 40,
+    marginTop: 5,
+    padding: 3
   },
   navigateToTasksButton: {
     backgroundColor: "#435676",
     padding: 8,
     borderRadius: 4,
+    alignSelf: "center",
+    width: "50%",
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 20,
+    textAlign: "center", // Centralizar o texto
   },
 });
