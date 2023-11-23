@@ -21,7 +21,7 @@ const Todo = ({ Texto, onEdit, onDelete }) => {
     
     <View style={{ ...styles.Todo, display: borrar ? "none" : "flex" }}>
       {!editing ? (
-        // Renderização quando não está em modo de edição
+        // Renderização para quando não está em modo de edição
         <>
           
           <TouchableOpacity

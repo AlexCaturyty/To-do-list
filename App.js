@@ -13,7 +13,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Todo from "./components/Todo";
 
-// Página Inicial
+// Página Inicial da Aplicação
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
