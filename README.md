@@ -2,14 +2,14 @@
 # To-do List
 ## Equipe: Alex Lucas, Paulo Barreto, Nicolly Mendonça, Tatiana Helena, José Gabriel, Gabriel Albuquerque, Arthur Eulalio e Sâmia
 
-## Ao baixar o repositório rode o seguinte comando no terminal para instalar os pacotes do Node:
+## Ao baixar o repositório execute o seguinte comando no terminal para instalar os pacotes do Node:
 ### `npm i`
 
-## Para iniciar a aplicação rode o comando no terminal:
+## Para iniciar a aplicação execute o comando no terminal:
 
 ### `npm start`
 
-## Para utilizar o aplicativo baixe o app na playstore:
+## Para utilizar o aplicativo instale o aplicativo na PlayStore:
 ### Expo Go
 
-## Após baixar e rodar o comando `npm start` leia o QRCode exibido no Terminal para rodar o aplicativo.
+## Após instalar e executar o comando `npm start` leia o QRCode exibido no Terminal para exe o aplicativo.
